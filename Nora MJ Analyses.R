@@ -146,6 +146,7 @@ SpHist(sqrt(subset(MJData, cudituse==1)$CUDIT))
 
 #Age
 t.test(Age~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(Age), sd=sd(Age))
 t.test(Age~cudituse, data=subset(MJData, Source==1))
 t.test(Age~cudituse, data=subset(MJData, Source==2))
 t.test(Age~cudituse, data=subset(MJData, Source==3))
@@ -158,6 +159,7 @@ cor.test(subset(MJData, Source==3)$Age, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$Age, subset(MJData, Source==4)$CUDIT)
 
 t.test(Age~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(Age), sd=sd(Age))
 t.test(Age~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(Age~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(Age~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -178,17 +180,20 @@ chisq.test(table(MJData$Female, MJData$Drug_THC_Beh))
 
 #edu
 CrossTable(MJData$edu, MJData$cudituse)
+table(MJData$edu, MJData$cudituse)
 chisq.test(table(MJData$edu, MJData$cudituse))
 
 MJData %>% group_by(edu) %>% summarise(meanCUDIT = mean(CUDIT))
 summary(aov(CUDIT~edu, data=MJData))
 
 CrossTable(MJData$edu, MJData$Drug_THC_Beh)
+table(MJData$edu, MJData$Drug_THC_Beh)
 chisq.test(table(MJData$edu, MJData$Drug_THC_Beh))
 
 
 #Drink.Days
 t.test(Drink.Days~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(Drink.Days, na.rm=T), sd=sd(Drink.Days, na.rm=T))
 t.test(Drink.Days~cudituse, data=subset(MJData, Source==1))
 t.test(Drink.Days~cudituse, data=subset(MJData, Source==2))
 t.test(Drink.Days~cudituse, data=subset(MJData, Source==3))
@@ -201,6 +206,7 @@ cor.test(subset(MJData, Source==3)$Drink.Days, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$Drink.Days, subset(MJData, Source==4)$CUDIT)
 
 t.test(Drink.Days~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(Drink.Days, na.rm=T), sd=sd(Drink.Days, na.rm=T))
 t.test(Drink.Days~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(Drink.Days~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(Drink.Days~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -209,6 +215,7 @@ t.test(Drink.Days~Drug_THC_Beh, data=subset(MJData, Source==4))
 
 #DPDD
 t.test(DPDD~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(DPDD, na.rm=T), sd=sd(DPDD, na.rm=T))
 t.test(DPDD~cudituse, data=subset(MJData, Source==1))
 t.test(DPDD~cudituse, data=subset(MJData, Source==2))
 t.test(DPDD~cudituse, data=subset(MJData, Source==3))
@@ -221,6 +228,7 @@ cor.test(subset(MJData, Source==3)$DPDD, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$DPDD, subset(MJData, Source==4)$CUDIT)
 
 t.test(DPDD~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(DPDD, na.rm=T), sd=sd(DPDD, na.rm=T))
 t.test(DPDD~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(DPDD~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(DPDD~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -229,6 +237,7 @@ t.test(DPDD~Drug_THC_Beh, data=subset(MJData, Source==4))
 
 #Binge.Days
 t.test(Binge.Days~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(Binge.Days, na.rm=T), sd=sd(Binge.Days, na.rm=T))
 t.test(Binge.Days~cudituse, data=subset(MJData, Source==1))
 t.test(Binge.Days~cudituse, data=subset(MJData, Source==2))
 t.test(Binge.Days~cudituse, data=subset(MJData, Source==3))
@@ -241,6 +250,7 @@ cor.test(subset(MJData, Source==3)$Binge.Days, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$Binge.Days, subset(MJData, Source==4)$CUDIT)
 
 t.test(Binge.Days~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(Binge.Days, na.rm=T), sd=sd(Binge.Days, na.rm=T))
 t.test(Binge.Days~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(Binge.Days~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(Binge.Days~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -249,6 +259,7 @@ t.test(Binge.Days~Drug_THC_Beh, data=subset(MJData, Source==4))
 
 #AUDIT
 t.test(AUDIT~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(AUDIT, na.rm=T), sd=sd(AUDIT, na.rm=T))
 t.test(AUDIT~cudituse, data=subset(MJData, Source==1))
 t.test(AUDIT~cudituse, data=subset(MJData, Source==2))
 t.test(AUDIT~cudituse, data=subset(MJData, Source==3))
@@ -261,6 +272,7 @@ cor.test(subset(MJData, Source==3)$AUDIT, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$AUDIT, subset(MJData, Source==4)$CUDIT)
 
 t.test(AUDIT~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(AUDIT, na.rm=T), sd=sd(AUDIT, na.rm=T))
 t.test(AUDIT~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(AUDIT~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(AUDIT~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -280,6 +292,7 @@ chisq.test(table(MJData$ftnd_1, MJData$Drug_THC_Beh))
 
 #BDItot
 t.test(BDItot~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(BDItot, na.rm=T), sd=sd(BDItot, na.rm=T))
 t.test(BDItot~cudituse, data=subset(MJData, Source==1))
 t.test(BDItot~cudituse, data=subset(MJData, Source==2))
 t.test(BDItot~cudituse, data=subset(MJData, Source==3))
@@ -292,6 +305,7 @@ cor.test(subset(MJData, Source==3)$BDItot, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$BDItot, subset(MJData, Source==4)$CUDIT)
 
 t.test(BDItot~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(BDItot, na.rm=T), sd=sd(BDItot, na.rm=T))
 t.test(BDItot~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(BDItot~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(BDItot~Drug_THC_Beh, data=subset(MJData, Source==3))
@@ -300,6 +314,7 @@ t.test(BDItot~Drug_THC_Beh, data=subset(MJData, Source==4))
 
 #BAItot
 t.test(BAItot~cudituse, data=MJData)
+MJData %>% group_by(cudituse) %>% summarise (n=n(), mean=mean(BAItot, na.rm=T), sd=sd(BAItot, na.rm=T))
 t.test(BAItot~cudituse, data=subset(MJData, Source==1))
 t.test(BAItot~cudituse, data=subset(MJData, Source==2))
 t.test(BAItot~cudituse, data=subset(MJData, Source==3))
@@ -312,6 +327,7 @@ cor.test(subset(MJData, Source==3)$BAItot, subset(MJData, Source==3)$CUDIT)
 cor.test(subset(MJData, Source==4)$BAItot, subset(MJData, Source==4)$CUDIT)
 
 t.test(BAItot~Drug_THC_Beh, data=MJData)
+MJData %>% group_by(Drug_THC_Beh) %>% summarise (n=n(), mean=mean(BAItot, na.rm=T), sd=sd(BAItot, na.rm=T))
 t.test(BAItot~Drug_THC_Beh, data=subset(MJData, Source==1))
 t.test(BAItot~Drug_THC_Beh, data=subset(MJData, Source==2))
 t.test(BAItot~Drug_THC_Beh, data=subset(MJData, Source==3))
